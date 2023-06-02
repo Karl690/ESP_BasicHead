@@ -75,6 +75,9 @@
             <DeployIfNotSpecificallyReferenced>false</DeployIfNotSpecificallyReferenced>
             <DoNotDeployVersionedBinaries>false</DoNotDeployVersionedBinaries>
           </Deployment>
+          <AlternateHeaderDirectories>
+            <string>./Pheonix</string>
+          </AlternateHeaderDirectories>
           <HeaderDiscoveryMode>HeaderDirectoryAndSubdirectories</HeaderDiscoveryMode>
           <ResourceDirectories />
         </CMakeTargetSpecificSettings>
@@ -182,7 +185,7 @@
     <DebugMethod>
       <ID>openocd</ID>
       <InterfaceID>esp_usb_jtag</InterfaceID>
-      <InterfaceSerialNumber>34:85:18:71:85:AC</InterfaceSerialNumber>
+      <InterfaceSerialNumber>68:B6:B3:23:1C:34</InterfaceSerialNumber>
       <Configuration xsi:type="com.visualgdb.edp.openocd.settings.esp32">
         <CommandLine>-f interface/esp_usb_jtag.cfg -c "adapter_khz 3000" -f target/esp32s3.cfg</CommandLine>
         <ExtraParameters>

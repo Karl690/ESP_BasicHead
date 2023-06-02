@@ -3,3 +3,4 @@ ESP_BasicHead/.visualgdb
 ESP_BasicHead/.vs
 ESP_BasicHead/build
 ESP_BasicHead/*.user
+ESP_BasicHead/CMakeLists.txt.old

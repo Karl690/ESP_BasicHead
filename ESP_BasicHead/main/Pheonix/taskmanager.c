@@ -2,9 +2,9 @@
 #include "configure.h"
 #include "taskmanager.h"
 
-uint16 SliceCnt = 0; // current slice being processed
-uint16 SliceOffset = 0;
-uint32 HeartBeat = 0;
+uint16_t SliceCnt = 0; // current slice being processed
+uint16_t SliceOffset = 0;
+uint32_t HeartBeat = 0;
 const PFUNC F1000HZ[NUM_1000HZ] =
 {
 	Spare, // keep as last call in this array
@@ -98,6 +98,7 @@ void Spare(void)
 }
 void BlinkHeartBeat(void)
 {
+	
 	HeartBeat++;
 	if (HeartBeat & 1) {
 		HEARTBEAT_SET;
