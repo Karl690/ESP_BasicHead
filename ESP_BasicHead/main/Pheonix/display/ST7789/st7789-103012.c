@@ -82,11 +82,11 @@ void ST7789_SetAddress(uint16_t x1, uint16_t y1, uint16_t x2, uint16_t y2)
 {
 	ST7789_write_command(0x2a); //
 	ST7789_write_data_word(x1 + LCDHandler.xOffset);
-	ST7789_write_data_word(x2 + LCDHandler.xOffset);
+	//ST7789_write_data_word(x2 + LCDHandler.xOffset);
 
 	ST7789_write_command(0x2b); //
 	ST7789_write_data_word(y1 + LCDHandler.yOffset);
-	ST7789_write_data_word(y2 + LCDHandler.yOffset);
+	//ST7789_write_data_word(y2 + LCDHandler.yOffset);
 
 	ST7789_write_command(0x2c); //
 }
@@ -260,7 +260,7 @@ void Init_Display()
 	SetupMyLCD();
 	ST7789_Init();
 //	ST7789_SetRotation(2);
-	ST7789_Fill_Color(RED);
+	//ST7789_Fill_Color(RED);
 	LCDHandler.ColorTable = ColorInvertTable;	
 }
 
@@ -273,12 +273,8 @@ void FillRGBRect(int16_t x, int16_t y, int w, int h, uint16_t* buf)
 	ST7789_SetAddress(x, y, xx, yy);
 		
 	for (uint16_t i = y; i < yy; i++) {
-//		for (uint16_t j = x; j < xx; j++) {
-//			ST7789_write_data_word(buf[i * MAX_LCD_SIZE + j]);
-//		}
-			
 		ST7789_write_data_bytes(pData, w *2);
-		pData += MAX_LCD_SIZE;
+		pData += LCD_WIDTH;
 	}
 }
-#endif //BOARD_T_DISPLAY
+#endif //BOARD_103012

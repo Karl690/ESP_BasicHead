@@ -280,34 +280,34 @@ void Format_SoapStringWithIndex(uint8_t row, void* info, uint16_t* colorTable)
 void UpdateScreen(LcdVariableInfo* InfoToDisplay)
 {
 	ResetGuiBuffer(LCDHandler.ColorTable[COLOR_BLACK]);
-	FillRect(10, 10, 100, 100, LCDHandler.ColorTable[COLOR_BLUE]);
+	//FillRect(10, 10, 100, 100, LCDHandler.ColorTable[COLOR_BLUE]);
 	uint16_t* colorTable = LCDHandler.ColorTable;
-//	for (uint16_t row = 0, ypos = 0; ypos < LCD_HEIGHT; row ++, ypos += LCD_LINESIZE) 
-//	{
-//		if (InfoToDisplay[row].VariablePointer == 0) break;
-//		switch (InfoToDisplay[row].FuncType)
-//		{
-//		case FUNC_INT:
-//		case FUNC_INT32: 		Format_Int32(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_INT16: 		Format_Int16(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_FLOAT: 		Format_Float3_3(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_FLOAT_QUEVAR: Format_Float_QueVar(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_HEX8: 		Format_Hex8(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_HEX16: 		Format_Hex16(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_HEX32: 		Format_Hex32(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_ASCII: 		Format_Ascii(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_BOOLEAN: 		Format_Boolean(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_BAR_STATUS: 	Format_Bar_Status(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_BAR_DUTTY: 	Format_Bar_Dutty(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_BAR_FLOAT: 	Format_Bar_Float(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_MEMHEX_64:    Format_MemoryDumpHex(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_MEMDUMPASCII: Format_MemoryDumpAscii(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_MEMDUMPHEX:   Format_MemoryDumpHex(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_MEMDISPASCII: Format_MemoryDisplayAscii(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_MEMDISPASCIIHEX: Format_MemoryDisplayAsciiHex(ypos, &InfoToDisplay[row], colorTable); break;
-//		case FUNC_ASCI_SOAP: 	Format_SoapStringWithIndex(ypos, &InfoToDisplay[row], colorTable); break;
-//		}
-//	}
+	for (uint16_t row = 0, ypos = 0; ypos < LCD_HEIGHT; row ++, ypos += LCD_LINESIZE) 
+	{
+		if (InfoToDisplay[row].VariablePointer == 0) break;
+		switch (InfoToDisplay[row].FuncType)
+		{
+		case FUNC_INT:
+		case FUNC_INT32: 		Format_Int32(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_INT16: 		Format_Int16(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_FLOAT: 		Format_Float3_3(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_FLOAT_QUEVAR: Format_Float_QueVar(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_HEX8: 		Format_Hex8(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_HEX16: 		Format_Hex16(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_HEX32: 		Format_Hex32(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_ASCII: 		Format_Ascii(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_BOOLEAN: 		Format_Boolean(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_BAR_STATUS: 	Format_Bar_Status(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_BAR_DUTTY: 	Format_Bar_Dutty(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_BAR_FLOAT: 	Format_Bar_Float(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_MEMHEX_64:    Format_MemoryDumpHex(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_MEMDUMPASCII: Format_MemoryDumpAscii(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_MEMDUMPHEX:   Format_MemoryDumpHex(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_MEMDISPASCII: Format_MemoryDisplayAscii(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_MEMDISPASCIIHEX: Format_MemoryDisplayAsciiHex(ypos, &InfoToDisplay[row], colorTable); break;
+		case FUNC_ASCI_SOAP: 	Format_SoapStringWithIndex(ypos, &InfoToDisplay[row], colorTable); break;
+		}
+	}
 	WriteGuiBuffer();
 }
 
