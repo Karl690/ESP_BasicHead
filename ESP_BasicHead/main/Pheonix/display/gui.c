@@ -1,4 +1,4 @@
-#include <Pheonix/configure.h>
+#include "configure.h"
 #ifdef USE_LCD
 #include "gui.h"
 #include "font.h"
@@ -7,7 +7,8 @@ uint16_t* GUI_BUF = NULL;//[LCD_HEIGHT][LCD_HEIGHT];
 
 void Init_GUI()
 {
-	GUI_BUF = (uint16_t*)heap_caps_malloc(LCD_HEIGHT * LCD_WIDTH * sizeof(uint16_t), MALLOC_CAP_DMA | MALLOC_CAP_INTERNAL);
+	// GUI_BUF = (uint16_t*)heap_caps_malloc(LCD_HEIGHT * LCD_WIDTH * sizeof(uint16_t), MALLOC_CAP_DMA | MALLOC_CAP_INTERNAL);
+	GUI_BUF = (uint16_t*)malloc(LCD_HEIGHT * LCD_WIDTH * sizeof(uint16_t));
 }
 void ResetGuiBuffer(uint16_t color)
 {

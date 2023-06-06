@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{803FD0C6-D64E-4E16-9DC3-1DAEC859A3D2}") = "TLE5012_TEXT_X1_ARD", "TLE5012_TEXT_X1_ARD.vgdbproj", "{D14324BC-A11A-46EB-A680-F2089BC9A3A3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|VisualGDB = Debug|VisualGDB
+		Release|VisualGDB = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D14324BC-A11A-46EB-A680-F2089BC9A3A3}.Debug|VisualGDB.ActiveCfg = Debug|VisualGDB
+		{D14324BC-A11A-46EB-A680-F2089BC9A3A3}.Debug|VisualGDB.Build.0 = Debug|VisualGDB
+		{D14324BC-A11A-46EB-A680-F2089BC9A3A3}.Release|VisualGDB.ActiveCfg = Release|VisualGDB
+		{D14324BC-A11A-46EB-A680-F2089BC9A3A3}.Release|VisualGDB.Build.0 = Release|VisualGDB
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {785FE9CA-480C-48A5-A652-3F6260F2B553}
+	EndGlobalSection
+EndGlobal

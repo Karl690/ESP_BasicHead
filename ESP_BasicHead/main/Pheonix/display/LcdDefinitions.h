@@ -1,7 +1,6 @@
 #pragma once
-#include <Pheonix/configure.h>
-//#define ST7789
-//#define USE_LCD
+#include "configure.h"
+
 #ifdef USE_LCD
 //Display Orientation Type
 #define PORTRAIT 				0
@@ -10,64 +9,10 @@
 #define LANDSCAPE_ROT180		3
 
 //Display Controller Type
-#define ST7735_LCD 				0
+#define ST7789_T_DISPLAY_LCD	0
+#define ST7789_103012_LCD		1
 #define ILI9341_LCD 			1
-#define ST7789_LCD				2
-
-typedef enum {
-	COLOR_BLACK = 0,
-	COLOR_WHITE = 1,
-	COLOR_RED = 2,
-	COLOR_LIME = 3,
-	COLOR_BLUE = 4,
-	COLOR_YELLOW = 5,
-	COLOR_CYAN = 6,
-	COLOR_MAGENTA = 7,
-	COLOR_SILVER = 8,
-	COLOR_GRAY = 9,
-	COLOR_MAROON = 10,
-	COLOR_OLIVE = 11,
-	COLOR_GREEN = 12,
-	COLOR_PURPLE = 13,
-	COLOR_TEAL = 14,
-	COLOR_NAVY = 15,
-	COLOR_DARKRED = 16,
-	COLOR_TOMATO = 17,
-	COLOR_GOLD = 18,
-	COLOR_YELLOWGREEN = 19,
-	COLOR_FORESTGREEN = 20,
-	COLOR_SPRINGGREEN = 21,
-	COLOR_DARKCYAN =22,
-	COLOR_PALETURQUOISE = 23,
-	COLOR_POWDERBLUE = 24,
-	COLOR_DEEPSKYBLUE = 25,
-	COLOR_LIGHTSKYBLUE = 26,
-	COLOR_DARKBLUE = 27,
-	COLOR_MEDINUSLATEBLUE = 28,
-	COLOR_DARKVIOLET = 29,
-	COLOR_PLUM = 30,
-	COLOR_BEIGE = 31,
-	COLOR_INDEX_SIZE = 32
-}ColorIndex_t;
-
-#define WHITE         	 (0xFFFF)
-#define BLACK         	 (0x0000)
-#define BLUE         	 (0x001F)
-#define BRED             (0XF81F)
-#define GRED 			 (0XFFE0)
-#define GBLUE			 (0X07FF)
-#define RED           	 (0xF800)
-#define MAGENTA       	 (0xF81F)
-#define GREEN         	 (0x07E0)
-#define CYAN          	 (0x7FFF)
-#define YELLOW        	 (0xFFE0)
-#define BROWN 			 (0XBC40)
-#define BRRED 			 (0XFC07)
-#define GRAY  			 (0X8430)
-#define DARKGRAY		 (0x3186)
-#define DARKBLUE      	 (0X01CF)
-#define LIGHTBLUE      	 (0X7D7C)
-#define GRAYBLUE       	 (0X5458)
+#define ST7735_LCD				2
 
 //#define AB
 #ifdef ST7735
@@ -130,8 +75,8 @@ typedef enum {
 
 	#define MAX_LCD_SIZE 		(MYLCD_WIDTH > MYLCD_HEIGHT?MYLCD_WIDTH:MYLCD_HEIGHT)
 
-#elif defined(ST7789)
- //* controller type ST7735
+#elif defined(BOARD_T_DISPLAY)
+ //* controller type 
 	#define LCD_LINESIZE		18
 	#define PADDING 			1				//Top and Bottom side dead zone, in pixels
 	#define LEFT_PADDING 		5				//Left side dead zone, in pixels
@@ -141,7 +86,7 @@ typedef enum {
 	//Define the LCD Controller Type
 	//#define ILI9341_320_240_LANDSCAPE
 	//#define ST7789_240_320_PORTRAIT
-	#define ST7789_320_170_PORTRAIT
+	#define ST7789_T_DISPLAY_320_170_PORTRAIT
 
 	#if defined(ST7789_240_320_PORTRAIT)
 		#define   MYLCD_CONTROLLER 		ST7789_LCD
@@ -158,7 +103,7 @@ typedef enum {
 		#define   MYLCD_WIDTH			240
 		#define   MYLCD_HEIGHT			280
 		#define   MYLCD_ORIENTATION		PORTRAIT	
-	#elif defined(ST7789_320_170_PORTRAIT)
+	#elif defined(ST7789_T_DISPLAY_320_170_PORTRAIT)
 		#define   MYLCD_XOFFSET			0
 		#define   MYLCD_YOFFSET			0
 		#define   MYLCD_CONTROLLER 		ST7789_LCD
@@ -169,10 +114,41 @@ typedef enum {
 
 	#define MAX_LCD_SIZE 		(MYLCD_WIDTH > MYLCD_HEIGHT?MYLCD_WIDTH:MYLCD_HEIGHT)
 
+
+#elif defined(BOARD_103012)
+ //* controller type 
+#define LCD_LINESIZE		18
+#define PADDING 			1				//Top and Bottom side dead zone, in pixels
+#define LEFT_PADDING 		5				//Left side dead zone, in pixels
+#define RIGHT_PADDING 		5				//Right side dead zone, in pixels
+#define VALUE_POS      		80
+#define GUI_FONT_SIZE 		16
+	//Define the LCD Controller Type	
+#define ST7789_240_320_PORTRAIT
+//#define ST7789_240_320_LANDSCAPE
+
+#if defined(ST7789_240_320_PORTRAIT)
+#define   MYLCD_CONTROLLER 		ST7789_LCD
+#define   MYLCD_XOFFSET			0
+#define   MYLCD_YOFFSET			0
+#define   MYLCD_WIDTH			240
+#define   MYLCD_HEIGHT			320
+#define   MYLCD_ORIENTATION		LANDSCAPE //PORTRAIT
+#elif defined(ST7789_240_320_LANDSCAPE)
+#define   MYLCD_CONTROLLER 		ST7789_LCD
+#define   MYLCD_XOFFSET			0
+#define   MYLCD_YOFFSET			0
+#define   MYLCD_WIDTH			320
+#define   MYLCD_HEIGHT			240
+#define   MYLCD_ORIENTATION		LANDSCAPE //PORTRAIT
+#endif
+
+#define MAX_LCD_SIZE 		(MYLCD_WIDTH > MYLCD_HEIGHT?MYLCD_WIDTH:MYLCD_HEIGHT)
+
 #endif
 
 
 #define LCD_WIDTH 	MYLCD_WIDTH
 #define LCD_HEIGHT 	MYLCD_HEIGHT
 
-#endif
+#endif //USE_LCD

@@ -9,7 +9,9 @@ idf_component_register(
                     	Pheonix/display/DisplayList.c
                     	Pheonix/display/gui.c
                     	Pheonix/utils/messages.c
-                    	Pheonix/display/ST7789/st7789.c
+                    	Pheonix/display/ST7789/st7789-t-display.c
+                    	Pheonix/display/ST7789/st7789-103012.c
+                    	Pheonix/display/lcdspi.c
                     INCLUDE_DIRS "."
-                    PRIV_INCLUDE_DIRS ./Pheonix)
+                    PRIV_INCLUDE_DIRS Pheonix)
 component_compile_options()

@@ -1,6 +1,11 @@
 
-ESP_BasicHead/.visualgdb
-ESP_BasicHead/.vs
+ESP_BasicHead/.visualgdb/
+ESP_BasicHead/.vs/
 ESP_BasicHead/build
 ESP_BasicHead/*.user
-ESP_BasicHead/CMakeLists.txt.old
+ESP_BasicHead/*.old
+TLE5012_TEXT_X1_ARD/build/
+TLE5012_TEXT_X1_ARD/.visualgdb/
+TLE5012_TEXT_X1_ARD/*.old
+TLE5012_TEXT_X1_ARD/*.user
+TLE5012_TEXT_X1_ARD/.vs/

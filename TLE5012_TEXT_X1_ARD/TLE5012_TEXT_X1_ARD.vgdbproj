@@ -7,7 +7,7 @@
     </CustomSourceDirectories>
     <AutoProgramSPIFFSPartition>true</AutoProgramSPIFFSPartition>
     <ProjectModeSettings>
-      <ProjectGUID>c6bb5bc0-f750-4d86-b282-3ef986556e41</ProjectGUID>
+      <ProjectGUID>b7fd634c-5591-4077-95e4-685e0c0a9060</ProjectGUID>
       <GroupSourcesByTypes>true</GroupSourcesByTypes>
       <GroupSourcesByPaths>true</GroupSourcesByPaths>
       <HeaderScanMode>SourceDirs</HeaderScanMode>
@@ -28,20 +28,12 @@
     <BinaryDirectory>build/$(PlatformName)/$(ConfigurationName)</BinaryDirectory>
     <MakeCommandTemplate>
       <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <RemoteHost>
-        <HostName>BuildMachine</HostName>
-        <Transport>BuiltinShortcut</Transport>
-      </RemoteHost>
       <Command>$(ToolchainNinja)</Command>
       <WorkingDirectory>$(BuildDir)</WorkingDirectory>
       <BackgroundMode xsi:nil="true" />
     </MakeCommandTemplate>
     <CMakeCommand>
       <SkipWhenRunningCommandList>false</SkipWhenRunningCommandList>
-      <RemoteHost>
-        <HostName>BuildMachine</HostName>
-        <Transport>BuiltinShortcut</Transport>
-      </RemoteHost>
       <Command>$(SYSPROGS_CMAKE_PATH)</Command>
       <BackgroundMode xsi:nil="true" />
     </CMakeCommand>
@@ -56,32 +48,19 @@
       <ProjectItemSettings>
         <GroupSourcesByTypes>false</GroupSourcesByTypes>
         <GroupSourcesByPaths>true</GroupSourcesByPaths>
-        <GroupTargetsByPaths>true</GroupTargetsByPaths>
+        <GroupTargetsByPaths>false</GroupTargetsByPaths>
         <FollowCMakeSourceGroups>false</FollowCMakeSourceGroups>
         <AutoRefreshProject>true</AutoRefreshProject>
-        <AlwaysConsiderOutdated>true</AlwaysConsiderOutdated>
+        <AlwaysConsiderOutdated>false</AlwaysConsiderOutdated>
         <SortTargetsByName>false</SortTargetsByName>
         <RedundantTargetMode>HideOuterProjectTargets</RedundantTargetMode>
-        <SortSourcesByName>true</SortSourcesByName>
-        <BuildAllTargetsInSubdir>true</BuildAllTargetsInSubdir>
-        <FoldSingleItemPathLevels>false</FoldSingleItemPathLevels>
+        <SortSourcesByName>false</SortSourcesByName>
+        <BuildAllTargetsInSubdir>false</BuildAllTargetsInSubdir>
+        <FoldSingleItemPathLevels>true</FoldSingleItemPathLevels>
       </ProjectItemSettings>
-      <TargetSpecificSettings>
-        <CMakeTargetSpecificSettings>
-          <TargetID>__idf_main</TargetID>
-          <Debug />
-          <Deployment>
-            <Mode>Auto</Mode>
-            <DeployIfNotSpecificallyReferenced>false</DeployIfNotSpecificallyReferenced>
-            <DoNotDeployVersionedBinaries>false</DoNotDeployVersionedBinaries>
-          </Deployment>
-          <AlternateHeaderDirectories />
-          <HeaderDiscoveryMode>HeaderDirectoryAndSubdirectories</HeaderDiscoveryMode>
-          <ResourceDirectories />
-        </CMakeTargetSpecificSettings>
-      </TargetSpecificSettings>
+      <TargetSpecificSettings />
       <SetLDLibraryPathFromDependentArtifacts>true</SetLDLibraryPathFromDependentArtifacts>
-      <ProjectGUID>4abf0589-22c3-4c91-a843-098df67666fe</ProjectGUID>
+      <ProjectGUID>d14324bc-a11a-46eb-a680-f2089bc9a3a3</ProjectGUID>
       <VirtualFolders />
       <ConfigurationNameCase>Upper</ConfigurationNameCase>
       <DefaultHeaderDiscoveryMode>HeaderDirectoryAndSubdirectories</DefaultHeaderDiscoveryMode>
@@ -141,11 +120,7 @@
   </Configurations>
   <ProgramArgumentsSuggestions />
   <Debug xsi:type="com.visualgdb.debug.embedded">
-    <AdditionalStartupCommands>
-      <GDBPreStartupCommands />
-      <GDBStartupCommands />
-      <GDBFinalizationCommands />
-    </AdditionalStartupCommands>
+    <AdditionalStartupCommands />
     <AdditionalGDBSettings>
       <Features>
         <DisableAutoDetection>false</DisableAutoDetection>
@@ -183,7 +158,7 @@
     <DebugMethod>
       <ID>openocd</ID>
       <InterfaceID>esp_usb_jtag</InterfaceID>
-      <InterfaceSerialNumber>68:B6:B3:23:1C:34</InterfaceSerialNumber>
+      <InterfaceSerialNumber>34:85:18:71:85:AC</InterfaceSerialNumber>
       <Configuration xsi:type="com.visualgdb.edp.openocd.settings.esp32">
         <CommandLine>-f interface/esp_usb_jtag.cfg -c "adapter_khz 3000" -f target/esp32s3.cfg</CommandLine>
         <ExtraParameters>

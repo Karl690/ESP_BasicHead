@@ -1,6 +1,6 @@
 #include "pininit.h"
-#include "../configure.h"
-#include "pinout.h"
+#include "configure.h"
+
 void Init_GPIO(void)
 {	
 	gpio_set_direction(PIN_POWER_ON, GPIO_MODE_OUTPUT);

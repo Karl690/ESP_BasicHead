@@ -1,12 +1,8 @@
 #pragma once
-#ifdef ST7789
+#include "configure.h"
+#ifdef BOARD_T_DISPLAY
 
-typedef enum {
-	COLOR_MODE_NORMAL,
-	COLOR_MODE_INVERT,
-	COLOR_MODE_SWAP,
-}color_mode_t;
-
+void ST7789_Init();
 void Init_Display();
 void FillRGBRect(int16_t x, int16_t y, int w, int h, uint16_t* buf);
 #endif

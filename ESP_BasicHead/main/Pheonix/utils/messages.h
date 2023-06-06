@@ -5,8 +5,8 @@
  *      Author: hyrel
  */
 #include <stdint.h>
-#include "../display/display.h"
-#include "../display/DisplayList.h"
+#include "display/display.h"
+#include "display/DisplayList.h"
 
 typedef struct {
 	char String[10];

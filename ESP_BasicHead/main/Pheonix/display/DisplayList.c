@@ -1,10 +1,11 @@
-#include <Pheonix/configure.h>
+#include "configure.h"
 #ifdef USE_LCD
 #include "global.h"
 #include "main.h"
 //#include "ADC/ADC.h"
 //#include "Execution/cmdprocessor.h"
 #include "display.h"
+#include "colortables.h"
 #include "LcdDefinitions.h"
 #include "taskmanager.h"
 //#include "Communication/secsserial.h"
