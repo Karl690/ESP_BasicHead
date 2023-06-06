@@ -1,5 +1,5 @@
 #include "configure.h"
-#ifdef USE_LCD
+#if defined(BOARD_T_DISPLAY) || defined(BOARD_103012) 
 #include <string.h>
 #include "main.h"
 #include "global.h"

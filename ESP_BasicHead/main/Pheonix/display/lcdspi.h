@@ -1,6 +1,6 @@
 #pragma once
 #include "../configure.h"
-#ifdef USE_LCD
+#if defined(BOARD_T_DISPLAY) || defined(BOARD_103012) 
 #include <driver/spi_master.h>
 
 typedef struct

@@ -1,6 +1,5 @@
 #include "../configure.h"
-#ifdef USE_LCD
-
+#if defined(BOARD_T_DISPLAY) || defined(BOARD_103012) 
 
 #include <string.h>
 
@@ -19,6 +18,7 @@ esp_lcd_panel_io_handle_t io_handle = NULL;
 spi_device_handle_t handle = NULL;
 #endif
 SPI_LCD_HandleTypeDef LCDHandler;
+
 void SetupMyLCD() 
 {
 	LCDHandler.RST_Pin = PIN_LCD_RST;

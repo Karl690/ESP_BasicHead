@@ -1,7 +1,7 @@
 #pragma once
 #include "configure.h"
 
-#ifdef USE_LCD
+#if defined(BOARD_T_DISPLAY) || defined(BOARD_103012) 
 //Display Orientation Type
 #define PORTRAIT 				0
 #define PORTRAIT_ROT180 		1
