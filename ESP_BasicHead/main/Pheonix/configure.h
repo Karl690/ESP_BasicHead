@@ -13,7 +13,7 @@
 #include "taskmanager.h"
 
 //103012 with spi display
-#define BOARD_103012
+//#define BOARD_103012
 #ifdef BOARD_103012
 #include "gpio/pinout_103012.h"		
 #include "display/ST7789/st7789-103012.h"  //spi lcd interface
@@ -22,7 +22,7 @@
 #endif 
 
 //T-Display with parallel interface
-//#define BOARD_T_DISPLAY
+#define BOARD_T_DISPLAY
 #ifdef BOARD_T_DISPLAY
 #include "gpio/pinout_T_display.h"	
 #include "display/ST7789/st7789-t-display.h" //parallel lcd interface

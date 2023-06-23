@@ -3,9 +3,11 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
-
+#include "spi/spi.h"
+#include "tle5012/tle5012.h"
 uint32_t DisplayIndex = 0;
 uint32_t ForegroundIndex = 0;
+
 void app_main(void)
 {
 	Init_GPIO();

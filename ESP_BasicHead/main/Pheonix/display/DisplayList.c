@@ -20,6 +20,7 @@ char TestString[] ="test String 12345";
 LcdVariableInfo LcdVarsTable[] = {
 	{&HeartBeat,               	"HB      ", FUNC_INT32,		COLOR_GREEN,	COLOR_RED, 		0},
 	{&ForegroundIndex, "FORIDX",			FUNC_INT32,		COLOR_BLUE,		COLOR_MAGENTA,	0},
+	{&Tle5012Angle, "Angle", FUNC_FLOAT, COLOR_BLUE, COLOR_MAGENTA, 0},
 //	{(uint32_t)&ScaledADCData[1],           "CH01_PA4", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},
 //	{(uint32_t)&ScaledADCData[2],           "CH02_PA5", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},
 //	{(uint32_t)&ScaledADCData[3],           "CH03_PB1", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},

@@ -1,11 +1,10 @@
 
 #include "freertos/FreeRTOS.h"
 #include "freertos/timers.h"
-
+#include "esp_timer.h"
 #include "TLE5012.h"
 
-
-TLE5012 TLE5012Handler = { 0 };
+unsigned char _ssc_delay = 0;
 const uint8_t J1850CRC8_Table[] = {
   0x00, 0x1D, 0x3A, 0x27, 0x74, 0x69, 0x4E, 0x53, 0xE8, 0xF5, 0xD2, 0xCF, 0x9C, 0x81, 0xA6, 0xBB, 
   0xCD, 0xD0, 0xF7, 0xEA, 0xB9, 0xA4, 0x83, 0x9E, 0x25, 0x38, 0x1F, 0x02, 0x51, 0x4C, 0x6B, 0x76, 
@@ -32,51 +31,64 @@ uint8_t J1850CRC8_Calc(const uint8_t *buf, int len) {
 	return ~reg;
 }
 
-void Init_TLE5012(gpio_num_t _csq, gpio_num_t _data, gpio_num_t _sck, unsigned char _ssc_delay)	
+#define NOP() asm volatile ("nop")
+
+unsigned long IRAM_ATTR micros()
 {
-	TLE5012Handler.csq_pin = _csq;
-	TLE5012Handler.data_pin = _data;
-	TLE5012Handler.sck_pin = _sck;
-	TLE5012Handler.ssc_delay= _ssc_delay;
+	return (unsigned long)(esp_timer_get_time());
+}
+void IRAM_ATTR delayMicroseconds(uint32_t us)
+{
+	uint32_t m = micros();
+	if (us) {
+		uint32_t e = (m + us);
+		if (m > e) {
+			//overflow
+			while (micros() > e) {
+				NOP();
+			}
+		}
+		while (micros() < e) {
+			NOP();
+		}
+	}
 }
 
-
-
 void TLE5012_Write(uint16_t x) {
-	gpio_set_direction(TLE5012Handler.data_pin, GPIO_MODE_OUTPUT);
+	gpio_set_direction(PIN_TLE5012_DATA, GPIO_MODE_OUTPUT);
 	for(uint8_t i = 0; i < 16; i++) {
-	  gpio_set_level(TLE5012Handler.sck_pin, 1);
-		gpio_set_level(TLE5012Handler.data_pin, (x & 0x8000) ? 1 : 0);
-		if (TLE5012Handler.ssc_delay) vTaskDelay(TLE5012Handler.ssc_delay);
+		gpio_set_level(PIN_TLE5012_SCK, 1);
+		gpio_set_level(PIN_TLE5012_DATA, (x & 0x8000) ? 1 : 0);
+		if (_ssc_delay) delayMicroseconds(_ssc_delay);
 
-	  gpio_set_level(TLE5012Handler.sck_pin, 0);
+		gpio_set_level(PIN_TLE5012_SCK, 0);
 		x <<= 1;
-		if (TLE5012Handler.ssc_delay) vTaskDelay(TLE5012Handler.ssc_delay);
+		if (_ssc_delay) delayMicroseconds(_ssc_delay);
 	}
-	gpio_set_direction(TLE5012Handler.data_pin, GPIO_MODE_INPUT);
+	gpio_set_direction(PIN_TLE5012_DATA, GPIO_MODE_INPUT);
 }
 
 uint16_t TLE5012_Read() {
   uint16_t x = 0;
   for(uint8_t i = 0; i < 16; i++) {
-	  gpio_set_level(TLE5012Handler.sck_pin, 1);
+	  gpio_set_level(PIN_TLE5012_SCK, 1);
 		x <<= 1;
-	  if (TLE5012Handler.ssc_delay) vTaskDelay(TLE5012Handler.ssc_delay);
+	  if (_ssc_delay) delayMicroseconds(_ssc_delay);
 
-	  gpio_set_level(TLE5012Handler.sck_pin, 0);
-	  x |= gpio_get_level(TLE5012Handler.data_pin) ? 1 : 0;
-	  if (TLE5012Handler.ssc_delay) vTaskDelay(TLE5012Handler.ssc_delay);
+	  gpio_set_level(PIN_TLE5012_SCK, 0);
+	  x |= gpio_get_level(PIN_TLE5012_DATA) ? 1 : 0;
+	  if (_ssc_delay) delayMicroseconds(_ssc_delay);
   }
   return x;
 }
 
 void TLE5012_Select() {
-	gpio_set_level(TLE5012Handler.csq_pin, 0);
-	if (TLE5012Handler.ssc_delay) vTaskDelay(TLE5012Handler.ssc_delay);
+	gpio_set_level(PIN_TLE5012_CSQ, 0);
+	if (_ssc_delay) delayMicroseconds(_ssc_delay);
 }
 
 void TLE5012_Deselect() {
-	gpio_set_level(TLE5012Handler.csq_pin, 1);
+	gpio_set_level(PIN_TLE5012_CSQ, 1);
 }
 
 uint16_t TLE5012_ReadAngle() {    
@@ -86,7 +98,7 @@ uint16_t TLE5012_ReadAngle() {
   TLE5012_Write(cmdReadAngle);
   x = TLE5012_Read();
   ck = TLE5012_Read();
-  TLE5012_Deselect();
+   TLE5012_Deselect();
   /*
   Serial.print(F("ANGLE="));
   Serial.println(x);
@@ -112,11 +124,11 @@ uint16_t TLE5012_ReadAngle() {
 }
 
 void TLE5012_Start() {
-	gpio_set_direction(TLE5012Handler.csq_pin, GPIO_MODE_OUTPUT);
-	gpio_set_direction(TLE5012Handler.sck_pin, GPIO_MODE_OUTPUT);
+	gpio_set_direction(PIN_TLE5012_CSQ , GPIO_MODE_OUTPUT);
+	gpio_set_direction(PIN_TLE5012_SCK, GPIO_MODE_OUTPUT);
 }
 
 void TLE5012_Stop() {
-	gpio_set_direction(TLE5012Handler.csq_pin, GPIO_MODE_INPUT);
-	gpio_set_direction(TLE5012Handler.sck_pin, GPIO_MODE_INPUT);
+	gpio_set_direction(PIN_TLE5012_CSQ, GPIO_MODE_INPUT);
+	gpio_set_direction(PIN_TLE5012_SCK, GPIO_MODE_INPUT);
 }

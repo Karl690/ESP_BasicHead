@@ -1,10 +1,11 @@
 #include "global.h"
 #include "configure.h"
 #include "taskmanager.h"
-
+#include "tle5012/tle5012.h"
 uint16_t SliceCnt = 0; // current slice being processed
 uint16_t SliceOffset = 0;
 uint32_t HeartBeat = 0;
+float Tle5012Angle = 0;
 const PFUNC F1000HZ[NUM_1000HZ] =
 {
 	Spare, // keep as last call in this array
@@ -52,6 +53,7 @@ const PFUNC F1HZ[NUM_1HZ] =
 	Spare,
 	BlinkHeartBeat,
 };
+
 /*
  * to make the slice scedular more effecient, we are going to use a binary counter, not base 10
  *
@@ -105,4 +107,10 @@ void BlinkHeartBeat(void)
 	}else {
 		HEARTBEAT_CLR;
 	}
+}
+
+void ReadTle5012()
+{
+	uint16_t data = Tle5012_ReadAngle();
+	Tle5012Angle = (data / 32764.f) * 360;
 }

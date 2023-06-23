@@ -12,6 +12,8 @@ idf_component_register(
                     	Pheonix/display/ST7789/st7789-t-display.c
                     	Pheonix/display/ST7789/st7789-103012.c
                     	Pheonix/display/lcdspi.c
+                    	Pheonix/spi/spi.c
+                    	Pheonix/tle5012/tle5012.c
                     INCLUDE_DIRS "."
                     PRIV_INCLUDE_DIRS Pheonix)
 component_compile_options()

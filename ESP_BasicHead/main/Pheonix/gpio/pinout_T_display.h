@@ -3,7 +3,7 @@
 #ifdef BOARD_T_DISPLAY
 
 #define PIN_POWER_ON                GPIO_NUM_15
-#define PIN_HEARTBEAT				GPIO_NUM_38 //LCD_BL
+#define PIN_HEARTBEAT				GPIO_NUM_20 //LCD_BL
 
 #define HEARTBEAT_SET				gpio_set_level(PIN_HEARTBEAT, 1);
 #define HEARTBEAT_CLR				gpio_set_level(PIN_HEARTBEAT, 0);
@@ -28,6 +28,11 @@
 
 #define PIN_TOUCH_INT                16
 #define PIN_TOUCH_RES                21
+
+#define TLE5012B_SPI_MISO_PIN 13
+#define TLE5012B_SPI_MOSI_PIN 11
+#define TLE5012B_SPI_SCLK_PIN 12
+#define TLE5012B_SPI_CS0_PIN 10
 
 
 #endif // BOARD_T_DISPLAY
