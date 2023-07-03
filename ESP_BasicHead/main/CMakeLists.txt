@@ -14,6 +14,7 @@ idf_component_register(
                     	Pheonix/display/lcdspi.c
                     	Pheonix/spi/spi.c
                     	Pheonix/tle5012/tle5012.c
+                    	Pheonix/adc/adc.c
                     INCLUDE_DIRS "."
                     PRIV_INCLUDE_DIRS Pheonix)
 component_compile_options()

@@ -17,6 +17,13 @@ static inline void spin(volatile unsigned long count) {
 	while (count--) asm volatile("nop");
 }
 
+static inline void spi_begin(struct spi *spi) {
+	gpio_write(spi->cs, 0);
+}
+static inline void spi_end(struct spi *spi) {
+	gpio_write(spi->cs, 1);
+}
+
 // Send a byte, and return a received byte
 unsigned char spi_txn(struct spi *spi, unsigned char tx) {
 	unsigned count = spi->spin <= 0 ? 9 : (unsigned) spi->spin;
