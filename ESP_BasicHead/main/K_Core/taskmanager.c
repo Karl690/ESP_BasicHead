@@ -2,6 +2,7 @@
 #include "configure.h"
 #include "taskmanager.h"
 #include "tle5012/tle5012.h"
+#include "adc/adc.h"
 uint16_t SliceCnt = 0; // current slice being processed
 uint16_t SliceOffset = 0;
 uint32_t HeartBeat = 0;
@@ -21,7 +22,7 @@ const PFUNC F1000HZ[NUM_1000HZ] =
 const PFUNC F100HZ[NUM_100HZ] =
 {
 	Spare,
-	Spare,
+	ProcessGetAdcRawData,
 	Spare,
 	Spare,
 	Spare,

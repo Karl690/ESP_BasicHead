@@ -5,9 +5,9 @@
  *      Author: hyrel
  */
 #pragma once
-#define RevisionHeader ">Hy:Pheonix:"
-#define MajorStep      "1.006"
-#define RevisionDate   "7/3/2023"
+#define RevisionHeader ">ESP32-S3 Basic Head:"
+#define MajorStep      "1.007"
+#define RevisionDate   "7/4/2023"
 #define CONNECTIONSTRING ">Hy:Pheonix Rev " MajorStep ":" RevisionDate ":ESP32S3:---:"   //"1.000:0:0:0:USB"
 
 /*

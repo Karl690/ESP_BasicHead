@@ -46,8 +46,10 @@ unsigned spi_readn(struct spi *spi, uint16 reg, int n) {
 	unsigned rx = 0;
 	spi_begin(spi);
 	//spi_txn(spi, reg | 0x80);
+	spi_txn(spi, (uint8_t)(reg >> 8));
+	vTaskDelay(10);
 	spi_txn(spi, (uint8_t)reg);
-	spi_txn(spi, (uint8_t)(reg>>8));
+	
 	for (int i = 0; i < n; i++) rx <<= 8, rx |= spi_txn(spi, 0);
 	spi_end(spi);
 	return rx;

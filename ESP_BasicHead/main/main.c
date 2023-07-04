@@ -16,7 +16,8 @@ void app_main(void)
 	Init_RCC();
 	Init_GUI();
 	Init_Display();
-	InitTle5012();
+	//InitTle5012();
+	Init_ADC();
 	while (1)
 	{
 		switch (DisplayIndex)
@@ -30,8 +31,7 @@ void app_main(void)
 		case 5:UpdateScreen(BarValueTable); break;
 		case 6:UpdateScreen(FaultValueTable); break;
 		}
-		vTaskDelay(10);
-		Tle5012_ReadAngle();
+		vTaskDelay(10);		
 		ForegroundIndex++;
 		/////////////
 	}

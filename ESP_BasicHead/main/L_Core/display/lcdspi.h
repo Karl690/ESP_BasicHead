@@ -1,5 +1,5 @@
 #pragma once
-#include "../configure.h"
+#include "K_Core/configure.h"
 #if defined(BOARD_T_DISPLAY) || defined(BOARD_103012) 
 #include <driver/spi_master.h>
 

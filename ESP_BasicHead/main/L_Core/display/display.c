@@ -7,14 +7,11 @@
 #include "display.h"
 #include "LcdDefinitions.h"
 #include "DisplayList.h"
-#include <Pheonix/utils/messages.h>
+#include "K_Core/utils/messages.h"
 #include "gui.h"
 #include "colortables.h"
 #include "taskmanager.h"
-//#include "Communication/messages.h"
-//#include "Execution/cmdprocessor.h"
-//#include "Execution/Sequencer.h"
-//#include "Communication/serial.h"
+
 
 char strTempVal[80] = {0};
 uint16_t idx = 0;

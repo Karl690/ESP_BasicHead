@@ -1,20 +1,22 @@
 idf_component_register(
                     SRCS
                     	"main.c"
-                    	Pheonix/taskmanager.c
-                    	Pheonix/rcc/rcc.c
-                    	Pheonix/gpio/pininit.c
-                    	Pheonix/display/colortables.c
-                    	Pheonix/display/display.c
-                    	Pheonix/display/DisplayList.c
-                    	Pheonix/display/gui.c
-                    	Pheonix/utils/messages.c
-                    	Pheonix/display/ST7789/st7789-t-display.c
-                    	Pheonix/display/ST7789/st7789-103012.c
-                    	Pheonix/display/lcdspi.c
-                    	Pheonix/spi/spi.c
-                    	Pheonix/tle5012/tle5012.c
-                    	Pheonix/adc/adc.c
+                    	K_Core/taskmanager.c
+                    	K_Core/rcc/rcc.c
+                    	K_Core/gpio/pininit.c
+                    	L_Core/display/colortables.c
+                    	L_Core/display/display.c
+                    	L_Core/display/DisplayList.c
+                    	L_Core/display/gui.c
+                    	K_Core/utils/messages.c
+                    	L_Core/display/ST7789/st7789-t-display.c
+                    	L_Core/display/ST7789/st7789-103012.c
+                    	L_Core/display/lcdspi.c
+                    	K_Core/spi/spi.c
+                    	K_Core/tle5012/tle5012.c
+                    	K_Core/adc/adc.c
                     INCLUDE_DIRS "."
-                    PRIV_INCLUDE_DIRS Pheonix)
+                    PRIV_INCLUDE_DIRS 
+						K_Core 
+						L_Core)
 component_compile_options()

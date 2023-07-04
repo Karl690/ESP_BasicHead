@@ -2,12 +2,13 @@
 #if defined(BOARD_T_DISPLAY) || defined(BOARD_103012) 
 #include "global.h"
 #include "main.h"
-//#include "ADC/ADC.h"
+#include "adc/adc.h"
 //#include "Execution/cmdprocessor.h"
 #include "display.h"
 #include "colortables.h"
 #include "LcdDefinitions.h"
 #include "taskmanager.h"
+
 //#include "Communication/secsserial.h"
 //#include "Communication/serial.h"
 //#include "Communication/parser.h"
@@ -16,12 +17,18 @@
 //char* AtofVariable="CmdQue[3] Variables";
 //char* displayTestString2="12345";
 //	{(uint32_t)&_gs.CanRxCount1,         "CnRx Cnt", FUNC_INT, 		BLUE,	MAGENTA, 	0},
-char TestString[] ="test String 12345";
+
 LcdVariableInfo LcdVarsTable[] = {
 	{&HeartBeat,               	"HB      ", FUNC_INT32,		COLOR_GREEN,	COLOR_RED, 		0},
 	{&ForegroundIndex, "FORIDX",			FUNC_INT32,		COLOR_BLUE,		COLOR_MAGENTA,	0},
 	{&Tle5012Angle, "Angle", FUNC_FLOAT, COLOR_BLUE, COLOR_MAGENTA, 0},
-//	{(uint32_t)&ScaledADCData[1],           "CH01_PA4", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},
+	{&ADC_Channel[0].adcRaw, "ADC0 raw", FUNC_INT16, COLOR_WHITE, COLOR_RED, 0},
+	{&ADC_Channel[0].convAvg, "ADC0 cAvg", FUNC_FLOAT, COLOR_WHITE, COLOR_RED, 0},
+	{&ADC_Channel[0].adcAvg, "ADC0 Avg", FUNC_INT16, COLOR_WHITE, COLOR_RED, 0},
+	{&ADC_Channel[1].convAvg, "ADC1 Raw", FUNC_INT16, COLOR_WHITE, COLOR_RED, 0},
+	{&ADC_Channel[1].adcRaw, "ADC1 cAvg", FUNC_FLOAT, COLOR_WHITE, COLOR_RED, 0},
+	{&ADC_Channel[1].convAvg, "ADC1 Avg", FUNC_INT16, COLOR_WHITE, COLOR_RED, 0},
+	
 //	{(uint32_t)&ScaledADCData[2],           "CH02_PA5", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},
 //	{(uint32_t)&ScaledADCData[3],           "CH03_PB1", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},
 //	{(uint32_t)&ScaledADCData[4],           "CH04_PC5", FUNC_FLOAT, 	COLOR_WHITE,	COLOR_RED, 		0},
